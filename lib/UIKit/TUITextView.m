@@ -415,7 +415,7 @@ static CAAnimation *ThrobAnimation()
 	if(autocorrectionEnabled) checkingTypes |= NSTextCheckingTypeCorrection | NSTextCheckingTypeReplacement;
 	
 	NSRange wholeLineRange = NSMakeRange(0, [self.text length]);
-	lastCheckToken = [[NSSpellChecker sharedSpellChecker] requestCheckingOfString:self.text range:wholeLineRange types:checkingTypes options:nil inSpellDocumentWithTag:0 completionHandler:^(NSInteger sequenceNumber, NSArray *results, NSOrthography *orthography, NSInteger wordCount) {
+	lastCheckToken = [[NSSpellChecker sharedSpellChecker] requestCheckingOfString:self.text range:wholeLineRange types:(NSTextCheckingTypes)checkingTypes options:nil inSpellDocumentWithTag:0 completionHandler:^(NSInteger sequenceNumber, NSArray *results, NSOrthography *orthography, NSInteger wordCount) {
 		NSRange selectionRange = [self selectedRange];
 		__block NSRange activeWordSubstringRange = NSMakeRange(0, 0);
 		[self.text enumerateSubstringsInRange:NSMakeRange(0, [self.text length]) options:NSStringEnumerationByWords | NSStringEnumerationSubstringNotRequired | NSStringEnumerationReverse | NSStringEnumerationLocalized usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
