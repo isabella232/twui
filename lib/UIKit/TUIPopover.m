@@ -109,9 +109,7 @@ NSTimeInterval const TUIPopoverDefaultFadeoutDuration = 0.3;
 {
     if (self.shown)
         return;
-    
-    [self.contentViewController viewWillAppear:YES]; //this will always be animated… in the current implementation
-    
+
     if (self.willShowBlock != nil)
         self.willShowBlock(self);
     
@@ -244,7 +242,9 @@ NSTimeInterval const TUIPopoverDefaultFadeoutDuration = 0.3;
     [positioningView.nsWindow addChildWindow:self.popoverWindow ordered:NSWindowAbove]; 
 	[self.popoverWindow makeKeyAndOrderFront:self];
 	[backgroundView updateMaskLayer];
-    
+
+	[self.contentViewController viewWillAppear:YES];
+
     CABasicAnimation *fadeInAnimation = [CABasicAnimation animationWithKeyPath:@"alphaValue"];
     fadeInAnimation.duration = 0.3;
     fadeInAnimation.tui_completionBlock = ^ {
