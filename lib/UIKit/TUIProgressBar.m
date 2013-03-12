@@ -301,6 +301,7 @@ void GHUIProgressPatternDrawCallback(void *info, CGContextRef context);
 	CGPathRelease(clipPath);
 	
 	CGRect animationViewFrame = CGRectMake(NSMinX(animationClippingView.bounds),NSMinY(animationClippingView.bounds), (NSWidth(animationClippingView.bounds) * 2.0), NSHeight(animationClippingView.bounds));
+	[self.animationView removeFromSuperview];
 	self.animationView = [[TUIView alloc] initWithFrame:animationViewFrame];
 	self.animationView.opaque = NO;
 	self.animationView.backgroundColor = [NSColor clearColor];
