@@ -32,6 +32,7 @@ static NSTimeInterval const TUIScrollIndicatorStateRefreshSpeed = 0.01f;
 
 @property (nonatomic, strong) NSTimer *hideKnobTimer;
 @property (nonatomic, assign) BOOL knobHidden;
+@property (nonatomic, strong) id scrollerStyleNotificationObserver;
 
 - (void)_hideKnob;
 - (void)_updateKnob;
@@ -56,17 +57,28 @@ static NSTimeInterval const TUIScrollIndicatorStateRefreshSpeed = 0.01f;
 		[self addSubview:knob];
 		[self _updateKnob];
 		[self _updateKnobAlphaWithSpeed:0.0];
-		
-		[[NSNotificationCenter defaultCenter] addObserver:self
-												 selector:@selector(preferredScrollerStyleChanged:)
-													 name:NSPreferredScrollerStyleDidChangeNotification
-												   object:nil];
+
+		__weak id weakSelf = self;
+
+		self.scrollerStyleNotificationObserver = [NSNotificationCenter.defaultCenter addObserverForName:NSPreferredScrollerStyleDidChangeNotification object:nil queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification *notification) {
+			TUIScrollKnob *self = weakSelf;
+			if (self == nil) return;
+
+			self.hideKnobTimer = nil;
+			
+			if([NSScroller preferredScrollerStyle] == NSScrollerStyleOverlay) {
+				[self _hideKnob];
+			} else {
+				self.knobHidden = NO;
+				[self _updateKnobAlphaWithSpeed:TUIScrollIndicatorStateChangeSpeed];
+			}
+		}];
 	}
 	return self;
 }
 
 - (void)dealloc {
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	[NSNotificationCenter.defaultCenter removeObserver:self.scrollerStyleNotificationObserver];
 }
 
 - (void)refreshKnobTimer {
@@ -100,17 +112,6 @@ static NSTimeInterval const TUIScrollIndicatorStateRefreshSpeed = 0.01f;
 		_hideKnobTimer = nil;
 	} else {
 		_hideKnobTimer = hideKnobTimer;
-	}
-}
-
-- (void)preferredScrollerStyleChanged:(id)sender {
-	self.hideKnobTimer = nil;
-	
-	if([NSScroller preferredScrollerStyle] == NSScrollerStyleOverlay) {
-		[self _hideKnob];
-	} else {
-		self.knobHidden = NO;
-		[self _updateKnobAlphaWithSpeed:TUIScrollIndicatorStateChangeSpeed];
 	}
 }
 
