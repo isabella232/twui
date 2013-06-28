@@ -268,9 +268,6 @@
 		D039724B15B7D7DE0092CD26 /* TUILayoutConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 48A10E7D15B7769A007F9EE3 /* TUILayoutConstraint.h */; };
 		D04007EB15BF2BC000FD49DB /* libExpecta.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D04007CD15BF2BB000FD49DB /* libExpecta.a */; };
 		D04007EC15BF2BC000FD49DB /* libSpecta.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D04007E015BF2BB300FD49DB /* libSpecta.a */; };
-		D040611615B6A7CD00F753ED /* NSTextView+TUIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D040611215B6A7CC00F753ED /* NSTextView+TUIExtensions.m */; };
-		D040611715B6A7CD00F753ED /* NSTextView+TUIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D040611215B6A7CC00F753ED /* NSTextView+TUIExtensions.m */; };
-		D040611815B6A7CD00F753ED /* NSTextView+TUIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D040611215B6A7CC00F753ED /* NSTextView+TUIExtensions.m */; };
 		D05D23A015BF7239000ED14F /* NSImage+TUIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D05D239E15BF7239000ED14F /* NSImage+TUIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D05D23A115BF7239000ED14F /* NSImage+TUIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D05D239E15BF7239000ED14F /* NSImage+TUIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D05D23A215BF7239000ED14F /* NSImage+TUIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D05D239E15BF7239000ED14F /* NSImage+TUIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -556,8 +553,6 @@
 		D04007C215BF2BAF00FD49DB /* Expecta.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Expecta.xcodeproj; path = expecta/Expecta.xcodeproj; sourceTree = "<group>"; };
 		D04007D515BF2BB300FD49DB /* Specta.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Specta.xcodeproj; path = specta/Specta.xcodeproj; sourceTree = "<group>"; };
 		D04007ED15BF2C0700FD49DB /* TwUITests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TwUITests-Prefix.pch"; sourceTree = "<group>"; };
-		D040611115B6A7CC00F753ED /* NSTextView+TUIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextView+TUIExtensions.h"; sourceTree = "<group>"; };
-		D040611215B6A7CC00F753ED /* NSTextView+TUIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextView+TUIExtensions.m"; sourceTree = "<group>"; };
 		D05D239E15BF7239000ED14F /* NSImage+TUIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+TUIExtensions.h"; sourceTree = "<group>"; };
 		D05D239F15BF7239000ED14F /* NSImage+TUIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+TUIExtensions.m"; sourceTree = "<group>"; };
 		D05DEE8A15BF645D005D8769 /* TUIStretchableImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUIStretchableImage.h; sourceTree = "<group>"; };
@@ -742,8 +737,6 @@
 				CBB74C3C13BE6E1900C85CB5 /* CoreText+Additions.m */,
 				887C227915C1C7BB006EC31D /* NSFont+TUIExtensions.h */,
 				887C227A15C1C7BB006EC31D /* NSFont+TUIExtensions.m */,
-				D040611115B6A7CC00F753ED /* NSTextView+TUIExtensions.h */,
-				D040611215B6A7CC00F753ED /* NSTextView+TUIExtensions.m */,
 				D0C7656F15B6341800E7AC2C /* TUICAAction.h */,
 				D0C7657015B6341800E7AC2C /* TUICAAction.m */,
 			);
@@ -1317,7 +1310,6 @@
 				D0C7656215B6297300E7AC2C /* NSClipView+TUIExtensions.m in Sources */,
 				D0C7656815B6297300E7AC2C /* NSScrollView+TUIExtensions.m in Sources */,
 				D0C7657615B6341800E7AC2C /* TUICAAction.m in Sources */,
-				D040611815B6A7CD00F753ED /* NSTextView+TUIExtensions.m in Sources */,
 				D039724115B7D7CC0092CD26 /* TUILayoutConstraint.m in Sources */,
 				D039724315B7D7CE0092CD26 /* TUILayoutManager.m in Sources */,
 				D039724515B7D7D40092CD26 /* TUIView+Layout.m in Sources */,
@@ -1391,7 +1383,6 @@
 				D0C7656015B6297300E7AC2C /* NSClipView+TUIExtensions.m in Sources */,
 				D0C7656615B6297300E7AC2C /* NSScrollView+TUIExtensions.m in Sources */,
 				D0C7657415B6341800E7AC2C /* TUICAAction.m in Sources */,
-				D040611615B6A7CD00F753ED /* NSTextView+TUIExtensions.m in Sources */,
 				48A10E8215B7769A007F9EE3 /* TUILayoutConstraint.m in Sources */,
 				48A10E8415B7769A007F9EE3 /* TUILayoutManager.m in Sources */,
 				48A10E8915B778E8007F9EE3 /* TUIView+Layout.m in Sources */,
@@ -1472,7 +1463,6 @@
 				D0C7656115B6297300E7AC2C /* NSClipView+TUIExtensions.m in Sources */,
 				D0C7656715B6297300E7AC2C /* NSScrollView+TUIExtensions.m in Sources */,
 				D0C7657515B6341800E7AC2C /* TUICAAction.m in Sources */,
-				D040611715B6A7CD00F753ED /* NSTextView+TUIExtensions.m in Sources */,
 				D039723F15B7D7CB0092CD26 /* TUILayoutConstraint.m in Sources */,
 				D039724215B7D7CE0092CD26 /* TUILayoutManager.m in Sources */,
 				D039724415B7D7D40092CD26 /* TUIView+Layout.m in Sources */,
