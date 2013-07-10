@@ -26,6 +26,11 @@
 #import "TUIViewNSViewContainer.h"
 #import "TUITooltipWindow.h"
 
+#define LOG_IF_NOT_MAINTHREAD(view) \
+	if (![NSThread isMainThread]) { \
+		NSLog(@"%s [Line %d] Called on a background thread for TUINSView %@ with identifier %@", __PRETTY_FUNCTION__, __LINE__, view, view.identifier); \
+	}
+
 // If enabled, NSViews contained within TUIViewNSViewContainers will be clipped
 // by any TwUI ancestors that enable clipping to bounds.
 //
@@ -706,14 +711,14 @@ static NSComparisonResult compareNSViewOrdering (NSView *viewA, NSView *viewB, v
 }
 
 - (void)recalculateNSViewOrdering; {
-	NSAssert([NSThread isMainThread], @"%s must be called on the main thread.\nTUINSView %@ with identifier %@", __PRETTY_FUNCTION__, self, self.identifier);
-	
+	LOG_IF_NOT_MAINTHREAD(self);
+
 	[self.appKitHostView sortSubviewsUsingFunction:&compareNSViewOrdering context:NULL];
 }
 
 - (void)recalculateNSViewClipping; {
-	NSAssert([NSThread isMainThread], @"%s must be called on the main thread.\nTUINSView %@ with identifier %@", __PRETTY_FUNCTION__, self, self.identifier);
-	
+	LOG_IF_NOT_MAINTHREAD(self);
+
 	#if !ENABLE_NSVIEW_CLIPPING
 	return;
 	#endif
@@ -779,8 +784,8 @@ static NSComparisonResult compareNSViewOrdering (NSView *viewA, NSView *viewB, v
 #pragma mark CALayer delegate
 
 - (void)layoutSublayersOfLayer:(CALayer *)layer {
-	NSAssert([NSThread isMainThread], @"%s must be called on the main thread.\nTUINSView %@ with identifier %@", __PRETTY_FUNCTION__, self, self.identifier);
-	
+	LOG_IF_NOT_MAINTHREAD(self);
+
 	if (layer == self.layer) {
 		// TUINSView.layer is being laid out
 		return;
