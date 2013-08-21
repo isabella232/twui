@@ -25,6 +25,11 @@
 #import "TUIViewNSViewContainer+Private.h"
 #import <CoreServices/CoreServices.h>
 
+#define LOG_IF_NOT_MAINTHREAD(object) \
+    if (![NSThread isMainThread]) { \
+        NSLog(@"%s [Line %d] Called on a background thread for TUIViewNSViewContainer %@", __PRETTY_FUNCTION__, __LINE__, object); \
+    }
+
 @interface TUIViewNSViewContainer () {
 	/**
 	 * A count indicating how many nested calls to <startRenderingContainedView>
@@ -46,7 +51,7 @@
 @synthesize rootView = _rootView;
 
 - (void)setRootView:(NSView *)view {
-	NSAssert1([NSThread isMainThread], @"%s should only be called from the main thread", __func__);
+    LOG_IF_NOT_MAINTHREAD(self);
 
 	// remove any existing guest view
 	[_rootView removeFromSuperview];
@@ -124,7 +129,7 @@
 }
 
 - (id)initWithNSView:(NSView *)view; {
-	NSAssert1([NSThread isMainThread], @"%s should only be called from the main thread", __func__);
+    LOG_IF_NOT_MAINTHREAD(self);
 
 	self = [self initWithFrame:view.frame];
 	if (!self)
@@ -141,7 +146,7 @@
 #pragma mark Geometry
 
 - (void)synchronizeNSViewAppearance; {
-	NSAssert1([NSThread isMainThread], @"%s should only be called from the main thread", __func__);
+    LOG_IF_NOT_MAINTHREAD(self);
 
 	// update the view's hiddenness based on the TwUI hierarchy
 	BOOL shouldBeHidden = NO;
@@ -288,7 +293,7 @@
 }
 
 - (CGSize)sizeThatFits:(CGSize)constraint {
-	NSAssert1([NSThread isMainThread], @"%s should only be called from the main thread", __func__);
+    LOG_IF_NOT_MAINTHREAD(self);
 
 	id view = self.rootView;
 	NSSize cellSize = NSMakeSize(10000, 10000);
