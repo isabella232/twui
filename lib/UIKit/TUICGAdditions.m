@@ -24,7 +24,7 @@ CGContextRef TUICreateOpaqueGraphicsContext(CGSize size)
 	size_t bitsPerComponent = 8;
 	size_t bytesPerRow = 4 * width;
 	CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-	CGBitmapInfo bitmapInfo = kCGBitmapByteOrder32Host | kCGImageAlphaNoneSkipFirst;
+	CGBitmapInfo bitmapInfo = kCGBitmapByteOrder32Host | kCGImageAlphaNoneSkipLast;
 	CGContextRef ctx = CGBitmapContextCreate(NULL, width, height, bitsPerComponent, bytesPerRow, colorSpace, bitmapInfo);
 	CGColorSpaceRelease(colorSpace);
 	return ctx;
@@ -39,7 +39,7 @@ CGContextRef TUICreateGraphicsContext(CGSize size)
 	CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
 	// http://www.cocoTUIlder.com/archive/cocoa/228931-sub-pixel-font-smoothing-with-cgbitmapcontext.html
 	// http://developer.apple.com/mac/library/qa/qa2001/qa1037.html
-	CGBitmapInfo bitmapInfo = kCGBitmapByteOrder32Host | kCGImageAlphaPremultipliedFirst;
+	CGBitmapInfo bitmapInfo = kCGBitmapByteOrder32Host | kCGImageAlphaPremultipliedLast;
 	CGContextRef ctx = CGBitmapContextCreate(NULL, width, height, bitsPerComponent, bytesPerRow, colorSpace, bitmapInfo);
 	CGColorSpaceRelease(colorSpace);
 	return ctx;
