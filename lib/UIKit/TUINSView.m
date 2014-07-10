@@ -147,6 +147,7 @@ static NSComparisonResult compareNSViewOrdering (NSView *viewA, NSView *viewB, v
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	
+	_rootView.nextResponder = nil;
 	_rootView.hostView = nil;
 	_rootView.nsView = nil;
 	[_rootView removeFromSuperview];
@@ -675,6 +676,14 @@ static NSComparisonResult compareNSViewOrdering (NSView *viewA, NSView *viewB, v
 }
 
 #pragma mark AppKit bridging
+
+- (BOOL)acceptsFirstResponder {
+	return NO;
+}
+
+- (BOOL)becomeFirstResponder {
+	return NO;
+}
 
 - (NSView *)hitTest:(NSPoint)point {
 	// convert point into our coordinate system, so it's ready to go for all
