@@ -1102,7 +1102,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastTestingUpgradeCheck = 0510;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 			};
 			buildConfigurationList = CB5B264513BE6DA200579B1E /* Build configuration list for PBXProject "TwUI" */;
 			compatibilityVersion = "Xcode 3.2";
