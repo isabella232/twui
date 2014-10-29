@@ -68,7 +68,7 @@
 	TUIStretchableImage *image = [[TUIStretchableImage alloc] init];
 	[image addRepresentations:self.representations];
 
-	image.capInsets = insets;
+	image.tui_capInsets = insets;
 	return image;
 }
 

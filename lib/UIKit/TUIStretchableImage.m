@@ -18,10 +18,6 @@
 
 @implementation TUIStretchableImage
 
-#pragma mark Properties
-
-@synthesize capInsets = _capInsets;
-
 #pragma mark Drawing
 
 - (void)drawInRect:(NSRect)dstRect fromRect:(NSRect)srcRect operation:(NSCompositingOperation)op fraction:(CGFloat)alpha {
@@ -36,7 +32,7 @@
 	}
 
 	CGSize size = CGSizeMake(CGImageGetWidth(image), CGImageGetHeight(image));
-	TUIEdgeInsets insets = self.capInsets;
+	TUIEdgeInsets insets = self.tui_capInsets;
 
 	// TODO: Cache the nine-part images for this common case of wanting to draw
 	// the whole source image.
@@ -149,7 +145,7 @@
 
 - (id)copyWithZone:(NSZone *)zone {
 	TUIStretchableImage *image = [super copyWithZone:zone];
-	image.capInsets = self.capInsets;
+	image.tui_capInsets = self.tui_capInsets;
 	return image;
 }
 
@@ -159,7 +155,7 @@
 	self = [super initWithCoder:coder];
 	if (self == nil) return nil;
 
-	self.capInsets = TUIEdgeInsetsMake(
+	self.tui_capInsets = TUIEdgeInsetsMake(
 		[coder decodeFloatForKey:@"capInsetTop"],
 		[coder decodeFloatForKey:@"capInsetLeft"],
 		[coder decodeFloatForKey:@"capInsetBottom"],
@@ -172,10 +168,10 @@
 - (void)encodeWithCoder:(NSCoder *)coder {
 	[super encodeWithCoder:coder];
 
-	[coder encodeFloat:self.capInsets.top forKey:@"capInsetTop"];
-	[coder encodeFloat:self.capInsets.left forKey:@"capInsetLeft"];
-	[coder encodeFloat:self.capInsets.bottom forKey:@"capInsetBottom"];
-	[coder encodeFloat:self.capInsets.right forKey:@"capInsetRight"];
+	[coder encodeFloat:self.tui_capInsets.top forKey:@"capInsetTop"];
+	[coder encodeFloat:self.tui_capInsets.left forKey:@"capInsetLeft"];
+	[coder encodeFloat:self.tui_capInsets.bottom forKey:@"capInsetBottom"];
+	[coder encodeFloat:self.tui_capInsets.right forKey:@"capInsetRight"];
 }
 
 @end

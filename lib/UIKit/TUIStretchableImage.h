@@ -28,6 +28,6 @@
  * Any portion of the image not covered by end caps will be tiled when the image
  * is drawn.
  */
-@property (nonatomic, assign) TUIEdgeInsets capInsets;
+@property (nonatomic, assign) TUIEdgeInsets tui_capInsets;
 
 @end
