@@ -18,12 +18,14 @@
 - (id)accessibilityHitTest:(NSPoint)point
 {
 	return self;
-	
+
+/*
 	if(CGRectContainsPoint(self.frame, point)) {
 		return self;
 	} else {
 		return nil;
 	}
+*/
 }
 
 - (BOOL)accessibilityIsIgnored
