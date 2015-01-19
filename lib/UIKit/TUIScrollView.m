@@ -346,7 +346,7 @@ static CVReturn scrollCallback(CVDisplayLinkRef displayLink, const CVTimeStamp *
 			offset.y = 0.0;
 		}
 	} else { // content smaller than bounds
-		if(0) { // let it move around in bounds
+		if(/* DISABLES CODE */ (0)) { // let it move around in bounds
 			if(my > b.size.height) {
 				offset.y = b.size.height - s.height;
 			}
