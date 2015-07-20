@@ -225,7 +225,7 @@ void AB_CTLinesGetRectsForRangeWithAggregationType(NSArray *lines, CGPoint *line
 			// If we have more than 1 line, we want to find the real height of the line by measuring the distance between the current line and previous line. If it's only 1 line, then we'll guess the line's height.
 			BOOL useRealHeight = i < linesCount - 1;
 			CGFloat neighborLineY = i > 0 ? lineOrigins[i - 1].y : (linesCount - 1 > i ? lineOrigins[i + 1].y : 0.0f);
-			CGFloat lineHeight = ceil(useRealHeight ? abs(neighborLineY - lineOrigin.y) : ascent + descent + leading);
+			CGFloat lineHeight = ceil(useRealHeight ? fabs(neighborLineY - lineOrigin.y) : ascent + descent + leading);
 			CGFloat line_y = round(useRealHeight ? lineOrigin.y + bounds.origin.y - lineHeight/2 + descent : lineOrigin.y - descent + bounds.origin.y);
 			
 			CGFloat startOffset = CTLineGetOffsetForStringIndex(line, startIndex, NULL);
@@ -250,7 +250,7 @@ void AB_CTLinesGetRectsForRangeWithAggregationType(NSArray *lines, CGPoint *line
 			// If we have more than 1 line, we want to find the real height of the line by measuring the distance between the current line and previous line. If it's only 1 line, then we'll guess the line's height.
 			BOOL useRealHeight = i < linesCount - 1;
 			CGFloat neighborLineY = i > 0 ? lineOrigins[i - 1].y : (linesCount > i ? lineOrigins[i + 1].y : 0.0f);
-			CGFloat lineHeight = ceil(useRealHeight ? abs(neighborLineY - lineOrigin.y) : ascent + descent + leading);
+			CGFloat lineHeight = ceil(useRealHeight ? fabs(neighborLineY - lineOrigin.y) : ascent + descent + leading);
 			CGFloat line_y = round(useRealHeight ? lineOrigin.y + bounds.origin.y - lineHeight/2 + descent : lineOrigin.y - descent + bounds.origin.y);
 			
 			CGFloat startOffset = CTLineGetOffsetForStringIndex(line, startIndex, NULL);
@@ -266,7 +266,7 @@ void AB_CTLinesGetRectsForRangeWithAggregationType(NSArray *lines, CGPoint *line
 			// If we have more than 1 line, we want to find the real height of the line by measuring the distance between the current line and previous line. If it's only 1 line, then we'll guess the line's height.
 			BOOL useRealHeight = i < linesCount - 1;
 			CGFloat neighborLineY = i > 0 ? lineOrigins[i - 1].y : (linesCount > i ? lineOrigins[i + 1].y : 0.0f);
-			CGFloat lineHeight = ceil(useRealHeight ? abs(neighborLineY - lineOrigin.y) : ascent + descent + leading);
+			CGFloat lineHeight = ceil(useRealHeight ? fabs(neighborLineY - lineOrigin.y) : ascent + descent + leading);
 			CGFloat line_y = round(useRealHeight ? lineOrigin.y + bounds.origin.y - lineHeight/2 + descent : lineOrigin.y - descent + bounds.origin.y);
 			
 			CGFloat endOffset = CTLineGetOffsetForStringIndex(line, endIndex, NULL);
@@ -286,7 +286,7 @@ void AB_CTLinesGetRectsForRangeWithAggregationType(NSArray *lines, CGPoint *line
 			// If we have more than 1 line, we want to find the real height of the line by measuring the distance between the current line and previous line. If it's only 1 line, then we'll guess the line's height.
 			BOOL useRealHeight = i < linesCount - 1;
 			CGFloat neighborLineY = i > 0 ? lineOrigins[i - 1].y : (linesCount > i ? lineOrigins[i + 1].y : 0.0f);
-			CGFloat lineHeight = ceil(useRealHeight ? abs(neighborLineY - lineOrigin.y) : ascent + descent + leading);
+			CGFloat lineHeight = ceil(useRealHeight ? fabs(neighborLineY - lineOrigin.y) : ascent + descent + leading);
 			CGFloat line_y = round(useRealHeight ? lineOrigin.y + bounds.origin.y - lineHeight/2 + descent : lineOrigin.y - descent + bounds.origin.y);
 			
 			CGRect r = CGRectMake(bounds.origin.x + lineOrigin.x, line_y, bounds.size.width, lineHeight);

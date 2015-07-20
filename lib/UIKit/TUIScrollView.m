@@ -842,7 +842,7 @@ static float clampBounce(float x) {
 			o = [self _fixProposedContentOffset:o];
 			[self _setContentOffset:o];
 			
-			if((fabsf(o.x - lastOffset.x) < 0.1) && (fabsf(o.y - lastOffset.y) < 0.1)) {
+			if((fabs(o.x - lastOffset.x) < 0.1) && (fabs(o.y - lastOffset.y) < 0.1)) {
 				[self _stopDisplayLink];
 				[self setContentOffset:destinationOffset];
 			}
@@ -1114,7 +1114,7 @@ static float clampBounce(float x) {
 					}
 				}
 				
-				if(MAX(fabsf(dx), fabsf(dy)) > 0.00001) { // ignore 0.0, 0.0
+				if(MAX(fabs(dx), fabs(dy)) > 0.00001) { // ignore 0.0, 0.0
 					_lastScroll.dx = dx;
 					_lastScroll.dy = dy;
 					_lastScroll.t = CFAbsoluteTimeGetCurrent();
